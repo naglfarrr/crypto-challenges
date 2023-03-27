@@ -1,7 +1,18 @@
+import java.util.Scanner;
+
 public class Base64Converter {
     public static void main(String[] args) {
-        String hex = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d1d";
-        System.out.println(convertHexToBase64(hex));
+        Scanner scanner = new Scanner(System.in);
+        String hex = "49276d206b696c6c696e6720796f757220627261696e206c696b65206120706f69736f6e6f7573206d757368726f6f6d";
+        System.out.println("sample input: " + hex);
+        System.out.println("sample output: " + convertHexToBase64(hex));
+        System.out.println("Now try your own input: ");
+        hex = scanner.nextLine();
+        while (!hex.equals("exit") && !hex.equals("quit") && !hex.equals("q")) {
+            System.out.println("base64: " + convertHexToBase64(hex));
+            System.out.println("The input has " + hex.length() / 2 + " bytes");
+            hex = scanner.nextLine();
+        }
     }
 
     public static String convertHexToBase64(String hex) {
