@@ -17,6 +17,7 @@ public class BytesUtil {
         }
         return bytes;
     }
+    
     public static String convertBytesToHex(byte[] bytes) {
         if (bytes == null || bytes.length == 0) {
             return "";
@@ -27,5 +28,9 @@ public class BytesUtil {
             sb.append(String.format("%02x", bytes[i]));
         }
         return sb.toString();
+    }
+
+    public static boolean isHexChar(char c) {
+        return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'f') || (c >= 'A' && c <= 'F');
     }
 }

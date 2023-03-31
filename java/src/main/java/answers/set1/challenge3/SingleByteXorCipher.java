@@ -14,6 +14,12 @@ public class SingleByteXorCipher {
         this.prob = EnglishLetterFrequency.probOfEnglish(this.decrypted);
     }
 
+    public SingleByteXorCipher(byte[] bytes, char key) {
+        this.key = key;
+        this.decrypted = decrypt(bytes, (byte) key);
+        this.prob = EnglishLetterFrequency.probOfEnglish(this.decrypted);
+    }
+
     public char getKey() {
         return key;
     }
@@ -32,6 +38,16 @@ public class SingleByteXorCipher {
     
     private static String decrypt(String hex, byte key) {
         byte[] bytes = utils.BytesUtil.convertHexToBytes(hex);
+        byte[] decrypted = new byte[bytes.length];
+        for (int i = 0; i < bytes.length; i++) {
+            decrypted[i] = (byte) (bytes[i] ^ key);
+        }
+        // System.out.println("debug: key=" + key + ", decrypted=" + new String(decrypted) + ", d[0]=" + decrypted[0] + ", d[1]=" + decrypted[1]);
+        // System.out.println("debug: key= " + key + ", char=" + (char) key);
+        return new String(decrypted);
+    }
+
+    private static String decrypt(byte[] bytes, byte key) {
         byte[] decrypted = new byte[bytes.length];
         for (int i = 0; i < bytes.length; i++) {
             decrypted[i] = (byte) (bytes[i] ^ key);
