@@ -32,7 +32,7 @@ public class SmallBytes implements Bytes {
 
             @Override
             public BiConsumer<List<Byte>, Byte> accumulator() {
-                return (list, b) -> list.prepend(b);
+                return List::prepend;
             }
 
             @Override
@@ -43,7 +43,7 @@ public class SmallBytes implements Bytes {
 
             @Override
             public BinaryOperator<List<Byte>> combiner() {
-                return (list1, list2) -> list1.prependAll(list2);
+                return List::prependAll;
             }
 
             @Override
@@ -54,7 +54,7 @@ public class SmallBytes implements Bytes {
 
             @Override
             public Supplier<List<Byte>> supplier() {
-                return () -> List.empty();
+                return List::empty;
             }
             
         };
