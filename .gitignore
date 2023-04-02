@@ -3,3 +3,6 @@
 
 # ignore workspace files
 .vscode
+
+# ignore all .idea files
+.idea
